@@ -1,6 +1,9 @@
-var path = require('path'),
-    webpack = require('webpack'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin");
+var autoprefixer = require('autoprefixer');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require('path');
+var precss  = require('precss');
+var webpack = require('webpack');
+
 
 var config = {
     entry: {
@@ -11,7 +14,6 @@ var config = {
         path: path.join(__dirname, 'dist'),
         filename: 'app.js',
         publicPath: '/dist/',
-        jsonpFunction: 'ricky'
     },
     module: {
         loaders: [
@@ -21,7 +23,7 @@ var config = {
             // },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'less-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader', 'less-loader')
             },
             {
                 test: /\.(png|jpg|gif)$/,

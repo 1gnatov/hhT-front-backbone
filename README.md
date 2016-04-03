@@ -20,16 +20,7 @@ Build
 Development
 -----
 
-    $ npm run d
+    $ npm run dev-server
 
 Go to http://localhost:3000 to launch your app.
 
-Public
------
-
-    $ npm run p
-
-Productions:
-- public/: chunks
-- index.jsp: entry
-- webpack-assets.json: hash of chunks
