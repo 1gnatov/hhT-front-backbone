@@ -2,11 +2,8 @@
 ## npm
 #################
 node_modules/
-
 #################
 ## build
 #################
-public/
 dist/
-index.jsp
-webpack-assets.json
+

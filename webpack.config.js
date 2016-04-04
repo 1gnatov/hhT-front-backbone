@@ -7,8 +7,7 @@ var webpack = require('webpack');
 
 var config = {
     entry: {
-        app: path.join(__dirname, 'app/main'),
-        vendor: ['jquery', 'backbone']
+        app: path.join(__dirname, 'app/scripts/init.js'),
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -25,6 +24,9 @@ var config = {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
                 loader: 'babel',
+                query: {
+                presets: ['es2015']
+              }
             },
             {
                 test: /\.less$/,
@@ -42,18 +44,16 @@ var config = {
         ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'vendor.js'
-        }),
-    
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
             Backbone: 'backbone',
             _: "underscore" 
         }),
-        new ExtractTextPlugin('app.css')
+        new ExtractTextPlugin('/app.css', {
+            publicPath: '/dist/',
+            allChunks: true
+        })
     ]
 };
 
