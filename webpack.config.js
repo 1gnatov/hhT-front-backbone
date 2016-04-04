@@ -22,6 +22,11 @@ var config = {
             //     loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
             // },
             {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                loader: 'babel',
+            },
+            {
                 test: /\.less$/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader', 'less-loader')
             },
@@ -29,16 +34,10 @@ var config = {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'url?limit=10000'
             },
-            /* adding Mustache templating */
             {
                 test: /\.html$/,
-                loader: 'mustache'
+                loader: 'underscore-template-loader'
             }
-            /* adding Underscore templating */
-            // {
-            //     test: /\.html$/,
-            //     loader: 'underscore-template-loader'
-            // }
 
         ]
     },
@@ -54,7 +53,7 @@ var config = {
             Backbone: 'backbone',
             _: "underscore" 
         }),
-        new ExtractTextPlugin('[name].css')
+        new ExtractTextPlugin('app.css')
     ]
 };
 
